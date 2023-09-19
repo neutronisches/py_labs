@@ -4,17 +4,24 @@
 всего.
 '''
 
-from collections import Counter
 import sys
 
 def func(text: str) -> str:
-    count = Counter(text)
-    ms = count.most_common(1)
-    mf = ms[0]
-    return mf[0]
+    alphabet = 'qwertyuiopasdfghjklzxcvbnmйцукенгшщзхъёфывапролджэячсмитьбю'
+    d = {}
+    for i in set(text):
+        if i in alphabet:
+            d[i] = text.count(i)
+    return sorted(d.items(), key=lambda x: x[1])[-1][0]
 
 if __name__ == '__main__':
     try:
-        print(func(''.join([str(x) for x in input().split()])))
+        s = ''
+        while True:
+            a = input().lower()
+            if a == 'финиш':
+                break
+            s += a
+        print(func(s))
     except KeyboardInterrupt:
         sys.exit()
