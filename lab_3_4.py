@@ -5,9 +5,10 @@
 буквы в нижнем регистре.
 '''
 
-string = input()
+string = input().lower()
+alphabet = 'qwertyuiopasdfghjklzxcvbnmйцукенгшщзхъёфывапролджэячсмитьбю'
 d = {}
 for i in set(string):
-    d[i] = string.count(i)
-if ' ' in d: del d[' ']
+    if i in alphabet:
+        d[i] = string.count(i)
 print(string, d, sep='\n')
